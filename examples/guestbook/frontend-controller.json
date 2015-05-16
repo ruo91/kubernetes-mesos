@@ -1,0 +1,23 @@
+  {
+    "id": "frontend-controller",
+    "kind": "ReplicationController",
+    "apiVersion": "v1beta1",
+    "desiredState": {
+      "replicas": 3,
+      "replicaSelector": {"name": "frontend"},
+      "podTemplate": {
+        "desiredState": {
+           "manifest": {
+             "version": "v1beta1",
+             "id": "frontend-controller",
+             "containers": [{
+               "name": "php-redis",
+               "image": "jdef/php-redis",
+               "ports": [{"containerPort": 80}]
+             }]
+           }
+         },
+         "labels": {"name": "frontend"}
+        }},
+    "labels": {"name": "frontend"}
+  }
